@@ -9,10 +9,14 @@ public class Main {
 
   public static void main(String[] args) throws IOException {
     int defaultPort = 8080;
+    int threadPoolThreadCount = 10;
     for (String arg : args) {
       if(arg.contains("port")){
         String[] port = arg.split("=");
         defaultPort = Integer.parseInt(port[1]);
+      } else if(arg.contains("threadPoolThreadCount")) {
+        String[] threadPoolThreadCountPair = arg.split("=");
+        threadPoolThreadCount =  Integer.parseInt(threadPoolThreadCountPair[1]);
       }
     }
 
@@ -20,8 +24,8 @@ public class Main {
 
     server.createContext("/", new ServerHandler());
 
-    server.setExecutor(Executors.newFixedThreadPool(10));
-    System.out.println("Server started on port " + defaultPort);
+    server.setExecutor(Executors.newFixedThreadPool(threadPoolThreadCount));
+    System.out.println("Server started on port:" + defaultPort +" with threadPoolThreadCount:" + threadPoolThreadCount);
     server.start();
   }
 }
