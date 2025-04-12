@@ -8,5 +8,5 @@ To build first;
 ```
 Then run server;
 ```
-java -jar build/libs/simplehttpservcer-1.0-SNAPSHOT.jar port=7000 threadPoolThreadCount=50
+java -jar build/libs/simplehttpserver-1.0-SNAPSHOT.jar port=7000 threadPoolThreadCount=50
 ```
